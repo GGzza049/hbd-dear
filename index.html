@@ -15,11 +15,41 @@
             box-shadow: 0 4px 24px rgba(0,0,0,0.1);
             padding: 24px;
         }
-        .card {
-            background: #f9c5d1;
-            border-radius: 12px;
-            padding: 20px;
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 480px;
+            perspective: 1000px;
             margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(.4,2,.6,1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            background: #f9c5d1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background: #f9c5d1;
         }
         .outside h1 {
             color: #d72660;
@@ -45,7 +75,7 @@
             margin-bottom: 8px;
         }
         .img-row img {
-            width: 120px;
+            width: 280px;
             border-radius: 8px;
             display: block;
             transition: 0.3s;
@@ -58,39 +88,51 @@
             color: #333;
             text-align: center;
         }
+        .flip-card:hover {
+            box-shadow: 0 8px 32px #d7266044;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <div class="outside">
-                <h1>Happy Birthday</h1>
-                <h3>สุขสันต์วันเกิดค้าบน้องเดียร์ ขอให้หลังจากนี่มีแต่เรื่องดีๆและไม่ปวดหัวกับการเรียนน่ะค้าบผ๋ม</h3>
-            </div>
-            <div class="inside">
-                <img src="Cake.jpg" alt="Cake">
-                <h3>ก็พี่ไม่ได้ร่วมแสดงความยินดีในวันเกิดแต่ก็ขอให้สนุกในวันเกิดน่ะ</h3>
-            </div>
-        </div>
-
-        <div class="block">
-            <div class="frames frame1">
-                <div class="img-row">
-                    <img src="imgD1.jpg" alt="">
-                    <img src="imgD2.jpg" alt="img2">
-                </div>
-                <p>ใช้ชีวิตให้สนุกแบบพี่และชีวิตจะไม่เศร้า</p>
-            </div>
-        </div>
-        <!-- ปุ่มเล่นเพลงวันเกิด -->
-        <div style="text-align:center; margin-top:24px;">
-            <audio controls>
-                <source src="งง.mp3" type="audio/mpeg">
-            </audio>
-        </div>
+        <div class="flip-card" id="flipCard" title="คลิกเพื่อพลิกการ์ด">
+            <div class="flip-card-inner">
+                <!-- ด้านหน้า -->
+             <div class="flip-card-front">
+    <div class="outside">
+        <h1>Happy Birthday</h1>
     </div>
-    <!-- confetti effect -->
-   tti effect -->
+    <div class="inside">
+        <img src="Cake.png" alt="Cake">
+        <h3>สุขสันต์วันเกิดค้าบน้องเดียร์ ขอให้หลังจากนี้มีแต่เรื่องดีๆ และไม่ปวดหัวกับการเรียนนะค้าบผ๋ม</h3>
+        <h3>ก็พี่ไม่ได้ร่วมแสดงความยินดีในวันเกิดแต่ก็ขอให้สนุกในวันเกิดนะ</h3>
+    </div>
+</div>
+<!-- ด้านหลัง -->
+<div class="flip-card-back">
+    <div class="block">
+        <div class="frames frame1">
+            <div class="img-row">
+                <img src="imgD1.jpg" alt="imgD1">
+                <img src="imgD2.jpg" alt="imgD2">
+            </div>
+            <p>"Have fun with life like I do, and you'll never feel down."</p>
+        </div>
+      <!-- filepath: c:\Users\Windows\Hbd Dear\index.html -->
+<div style="display:none;">
+    <audio id="bgm" loop>
+        <source src="งง.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<script>
+document.body.addEventListener('click', function playMusicOnce() {
+    document.getElementById('bgm').play();
+    document.body.removeEventListener('click', playMusicOnce);
+});
+</script>
+    </div>
+</div>
+    <!-- confetti effect และการ์ดหมุน -->
     <script>
     function confetti() {
       for(let i=0; i<100; i++) {
@@ -107,10 +149,15 @@
         setTimeout(()=>div.remove(), 2000);
       }
     }
-    // เรียก confetti ทุก 2 วินาที (2000 มิลลิวินาที)
     window.onload = function() {
       confetti();
       setInterval(confetti, 2000);
+
+      // การ์ดหมุนแบบพลิกหน้า-หลัง
+      const flipCard = document.getElementById('flipCard');
+      flipCard.addEventListener('click', function() {
+        flipCard.classList.toggle('flipped');
+      });
     };
     </script>
 </body>

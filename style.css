@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Pacifico&family=Playpen+Sans+Thai:wght@100..800&display=swap');
+
 .img-row {
   display: flex;
 }
 .img-row img {
-  width: 200px;
+  width:200px;
 }
 .img-row img:not(:last-child) {
   margin-right: 10px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -23,4 +24,53 @@ body {
     font-family: 'Bodoni Moda', serif;
     margin: 0;
     padding: 0;
+}
+
+/* จัดข้อความ Happy Birthday ให้อยู่สูงขึ้นและขนาดใหญ่ */
+.flip-card-front .outside {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    padding-top: 40px;
+}
+
+.flip-card-front .outside h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Pacifico', cursive;
+    color: #ff69b4;
+}
+
+/* ใช้ Playpen Sans Thai กับ h3 ภาษาไทย */
+.flip-card-front .outside h3,
+.flip-card-front .inside h3 {
+    font-family: 'Playpen Sans Thai', cursive, 'Bodoni Moda', serif;
+    font-size: 1.3rem;
+    color: #d72660;
+    font-weight: 500;
+}
+
+/* ใช้ Bodoni Moda กับ p */
+.frames p {
+    font-family: 'Libertinus Mono', monospace;
+    font-size: 1.15rem;
+    color: #333;
+    text-align: center;
+}
+.inside img {
+    width: 380px;   /* ปรับขนาดตามต้องการ เช่น 320px, 350px */
+    display: block;
+    margin: 0 auto 10px;
+    animation: cake-bounce 1.2s infinite;
+}
+
+@keyframes cake-bounce {
+    0%, 100% { transform: translateY(0);}
+    20% { transform: translateY(-20px);}
+    40% { transform: translateY(0);}
+    60% { transform: translateY(-12px);}
+    80% { transform: translateY(0);}
 }
