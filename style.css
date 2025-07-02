@@ -1,0 +1,26 @@
+.img-row {
+  display: flex;
+}
+.img-row img {
+  width: 200px;
+}
+.img-row img:not(:last-child) {
+  margin-right: 10px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Bodoni Moda', serif;
+}
+body {
+    height: 100vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+                url('PP.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Bodoni Moda', serif;
+    margin: 0;
+    padding: 0;
+}

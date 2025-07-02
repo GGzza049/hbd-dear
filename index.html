@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            padding: 24px;
+        }
+        .card {
+            background: #f9c5d1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .outside h1 {
+            color: #d72660;
+            margin-bottom: 10px;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-20px);}
+        }
+        .inside img {
+            width: 200px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .block {
+            margin-top: 20px;
+        }
+        .img-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+        .img-row img {
+            width: 120px;
+            border-radius: 8px;
+            display: block;
+            transition: 0.3s;
+        }
+        .img-row img:hover {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 4px 16px #d72660aa;
+        }
+        .frames p {
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="outside">
+                <h1>Happy Birthday</h1>
+                <h3>สุขสันต์วันเกิดค้าบน้องเดียร์ ขอให้หลังจากนี่มีแต่เรื่องดีๆและไม่ปวดหัวกับการเรียนน่ะค้าบผ๋ม</h3>
+            </div>
+            <div class="inside">
+                <img src="Cake.jpg" alt="Cake">
+                <h3>ก็พี่ไม่ได้ร่วมแสดงความยินดีในวันเกิดแต่ก็ขอให้สนุกในวันเกิดน่ะ</h3>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="frames frame1">
+                <div class="img-row">
+                    <img src="imgD1.jpg" alt="">
+                    <img src="imgD2.jpg" alt="img2">
+                </div>
+                <p>ใช้ชีวิตให้สนุกแบบพี่และชีวิตจะไม่เศร้า</p>
+            </div>
+        </div>
+        <!-- ปุ่มเล่นเพลงวันเกิด -->
+        <div style="text-align:center; margin-top:24px;">
+            <audio controls>
+                <source src="งง.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+    <!-- confetti effect -->
+   tti effect -->
+    <script>
+    function confetti() {
+      for(let i=0; i<100; i++) {
+        let div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.left = Math.random()*100 + 'vw';
+        div.style.top = Math.random()*100 + 'vh';
+        div.style.width = div.style.height = '8px';
+        div.style.background = `hsl(${Math.random()*360},100%,70%)`;
+        div.style.borderRadius = '50%';
+        div.style.zIndex = 9999;
+        div.style.opacity = 0.7;
+        document.body.appendChild(div);
+        setTimeout(()=>div.remove(), 2000);
+      }
+    }
+    // เรียก confetti ทุก 2 วินาที (2000 มิลลิวินาที)
+    window.onload = function() {
+      confetti();
+      setInterval(confetti, 2000);
+    };
+    </script>
+</body>
+</html>
